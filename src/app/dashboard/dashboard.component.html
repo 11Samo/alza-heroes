@@ -1,0 +1,21 @@
+<div class="wrapper-container w-1/2">
+  <div class="frame">
+    <h2>Tour of Heroes</h2>
+    <nav class="flex gap-2 items-center mt-2">
+      <a class="link link-highlight">Dashboard</a>
+      <a routerLink="/heroes" class="link">Heroes</a>
+    </nav>
+    <div class="mt-5">
+      <div class="flex justify-center">
+        <h3>Top Heroes</h3>
+      </div>
+      <div class="flex justify-between">
+        <div *ngFor="let hero of topHeroes">
+          <a [routerLink]="['/hero', hero.id]"
+            class="flex items-center justify-center primary-color text-white p-8 w-28 text-center rounded-sm">{{
+            hero.name | truncate:9}}</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

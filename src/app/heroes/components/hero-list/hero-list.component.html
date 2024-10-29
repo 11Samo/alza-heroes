@@ -1,0 +1,32 @@
+<div class="wrapper-container w-96">
+  <div class="frame">
+    <h2>Tour of Heroes</h2>
+    <nav>
+      <a routerLink="/" class="link">Dashboard</a>
+      <a class="link link-highlight">Heroes</a>
+    </nav>
+    <h3>My Heroes</h3>
+
+    <div class="hero-list space-y-4 pb-5">
+      <div *ngFor="let hero of heroes">
+        <div *ngIf="hero.id === 0; else normalHero" [routerLink]="['/hero/new']"
+          class="bg-gray-100 w-10/12 rounded-sm p-3 cursor-pointer">
+          <a>{{ hero.name }}</a>
+        </div>
+
+        <ng-template #normalHero>
+          <div class="w-10/12 flex" (click)="selectHero(hero)">
+            <app-hero-card class="flex-1" [hero]="hero"></app-hero-card>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+
+    <div *ngIf="selectedHero" class="mt-5 ">
+      <h3 class="text-xl font-medium mb-3">{{ selectedHero.name | truncate:30 }} is my Hero</h3>
+      <button (click)="viewHeroDetail()" class="mt-2 mb-3 py-1 px-2 bg-gray-200 text-gray-600 font-medium rounded-sm">
+        View Details
+      </button>
+    </div>
+  </div>
+</div>

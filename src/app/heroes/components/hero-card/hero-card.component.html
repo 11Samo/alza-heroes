@@ -1,0 +1,5 @@
+<div class="flex cursor-pointer">
+  <h4 class="primary-color text-white px-4 py-3 rounded-l-md">{{hero.id}}</h4>
+  <h4 class="px-4 py-3 bg-gray-100 rounded-r-md flex-grow" [appHeroNameLength]="hero.name">{{ hero.name | truncate:22}}
+  </h4>
+</div>
